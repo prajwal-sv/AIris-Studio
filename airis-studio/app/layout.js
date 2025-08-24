@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono,Inter} from "next/font/google"; 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner";
+import Floatingshapes from "@/components/floating-shapes";
 
 const inter =  Inter({subsets: ['latin'], variable: '--font-inter', weight: ['400', '500', '600', '700']})
 
@@ -21,7 +23,15 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+          
+            <main className="bg-slate-900  min-h-[2000px] text-white overflow-x-hidden" >
+              <Floatingshapes />
+              <Toaster richColors />
+              
+              
+              {children}
+            </main>
+            
           </ThemeProvider>
       </body>
     </html>
