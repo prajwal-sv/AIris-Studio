@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner";
 import Floatingshapes from "@/components/floating-shapes";
+import Header from "@/components/header";
+
 
 const inter =  Inter({subsets: ['latin'], variable: '--font-inter', weight: ['400', '500', '600', '700']})
 
@@ -14,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning >
-      <body className={`${inter.className}`}>
+      <body suppressHydrationWarning className={`${inter.className}`}>
 
 
       <ThemeProvider
@@ -23,8 +25,9 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
+           <Header />
           
-            <main className="bg-slate-900  min-h-[2000px] text-white overflow-x-hidden" >
+            <main className="bg-slate-900  min-h-screen text-white overflow-x-hidden" >
               <Floatingshapes />
               <Toaster richColors />
               
