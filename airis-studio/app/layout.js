@@ -5,6 +5,15 @@ import { Toaster } from "@/components/ui/sonner";
 import Floatingshapes from "@/components/floating-shapes";
 import Header from "@/components/header";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { shadesOfPurple } from "@clerk/themes";
 
 
 const inter =  Inter({subsets: ['latin'], variable: '--font-inter', weight: ['400', '500', '600', '700']})
@@ -25,19 +34,27 @@ export default function RootLayout({ children }) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-            <ConvexClientProvider>
+          > 
+            <ClerkProvider 
+              appearance={{
+                baseTheme: shadesOfPurple,
+                
+              }}
+              >
             
-           <Header />
-          
-            <main className="bg-slate-900  min-h-screen text-white overflow-x-hidden" >
-              <Floatingshapes />
-              <Toaster richColors />
+             <ConvexClientProvider>
+            
+                <Header />
+           
+                <main className="bg-slate-900  min-h-screen text-white overflow-x-hidden" >
+                  <Floatingshapes />
+                  <Toaster richColors />
               
               
-              {children}
-            </main>
-            </ConvexClientProvider>
+                 {children}
+                </main>
+             </ConvexClientProvider>
+            </ClerkProvider>
           </ThemeProvider>
       </body>
     </html>

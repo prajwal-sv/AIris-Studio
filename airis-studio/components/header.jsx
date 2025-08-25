@@ -3,7 +3,15 @@ import React, { use } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { Button } from './ui/button';
 
 const Header = () => {
 
@@ -44,7 +52,26 @@ const Header = () => {
 
  </div>)}
 
- <div className="flex items-center gap-3 ml-10 md:ml-20">Auth</div>
+ <div className="flex items-center gap-3 ml-10 md:ml-20">
+    <SignedOut><SignInButton>
+         <Button variant="glass">Sign In</Button>
+    </SignInButton>
+             
+              <SignUpButton>
+               <Button variant="primary">Sign up</Button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton 
+                    appearance={{
+                        elements:{
+                            avatarBox : "w-9 h-9 rounded-full ring-6 ring-white/30 hover:ring-cyan-900 transition-all"
+                        }
+                    }}
+              />
+            </SignedIn>
+
+ </div>
 
   </div>
   
