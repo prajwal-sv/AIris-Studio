@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner";
 import Floatingshapes from "@/components/floating-shapes";
 import Header from "@/components/header";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 
 const inter =  Inter({subsets: ['latin'], variable: '--font-inter', weight: ['400', '500', '600', '700']})
@@ -25,6 +26,8 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
+            <ConvexClientProvider>
+            
            <Header />
           
             <main className="bg-slate-900  min-h-screen text-white overflow-x-hidden" >
@@ -34,7 +37,7 @@ export default function RootLayout({ children }) {
               
               {children}
             </main>
-            
+            </ConvexClientProvider>
           </ThemeProvider>
       </body>
     </html>
